@@ -5,8 +5,8 @@ export default function Carousal() {
         <div>
             <div id="carouselExampleFade" className="carousel slide carousel-fade" data-bs-ride="carousel" style={{"objectFit":"contain !important"}}>
                 <div className="carousel-inner" id="carousel">
-                    <div class="carousel-caption" style={{ "zIndex": "10" }}>
-                        <form class="d-flex">
+                    <div className="carousel-caption" style={{ "zIndex": "10" }}>
+                        <form className="d-flex">
                             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                             <button className="btn btn-outline-success" type="submit">Search</button>
                         </form>

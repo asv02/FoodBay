@@ -15,7 +15,7 @@ export default function Navbar() {
               <Link className="nav-link active" aria-current="page" to={"./"}>Home</Link>
               {/* ./login path routing is set to login page using routes so no reloading happens*/}
               <Link className="nav-link" to={"./login"}>Login</Link>
-              <Link className="nav-link" to={"./createuser"}>Signup</Link>
+              <Link className="nav-link" to={"./Signup"}>Signup</Link>
             </div>
           </div>
         </div>
