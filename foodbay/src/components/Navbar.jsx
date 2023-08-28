@@ -13,9 +13,9 @@ export default function Navbar() {
           <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div className="navbar-nav">
               <Link className="nav-link active" aria-current="page" to={"./"}>Home</Link>
-              <Link className="nav-link" to={"./"}>Features</Link>
-              <Link className="nav-link" to={"./login"}>Login</Link>
               {/* ./login path routing is set to login page using routes so no reloading happens*/}
+              <Link className="nav-link" to={"./login"}>Login</Link>
+              <Link className="nav-link" to={"./createuser"}>Signup</Link>
             </div>
           </div>
         </div>

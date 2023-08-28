@@ -14,11 +14,11 @@ const mongodb = async () => {
         try{
             console.log(data);
         }
-        catch{
+        catch(error){
             console.log("Error occured during fetching and converting to array. ");
         }
     }
-    catch {
+    catch(error) {
         console.log('Error occured during connection to database.')
     }
 }

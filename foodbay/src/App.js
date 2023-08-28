@@ -8,6 +8,7 @@ import {
   BrowserRouter as Router,
   Routes, Route
 } from "react-router-dom";
+import Signup from "./screens/Signup";
 
 //Router->div->Routes->Route
 
@@ -18,6 +19,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home/>}/>
         <Route exact path="/login" element={<Login/>}/>
+        <Route exact path="/createuser" element={<Signup/>}/>
       </Routes>
       </div>
     </Router>
