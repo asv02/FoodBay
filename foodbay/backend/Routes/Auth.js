@@ -3,6 +3,11 @@ const router = express.Router()
 const User = require('../models/Users');
 const { body, validationResult } = require('express-validator');
 
+const jwt=require('jsonwebtoken');//we send token with our request when we hit a endpoint to tell server that we are safe user.
+
+const bcrypt=require('bcryptjs');//hashing algorithm used to hash passwords,etc.
+
+const jwtSecret="AkashSuryavanshi";//secret key used for sign.
 
 router.post("/createuser",
     [
@@ -18,11 +23,13 @@ router.post("/createuser",
             return res.status(400).json({ errors: errors.array() });
         }
 
+        const salt=await bcrypt.genSalt(10);//this is salt(some extra bits.)
+        let secpassword=await bcrypt.hash(req.body.password,salt)//create hash of password using salt.
         try {
             console.log(req.body);
             await User.create({
                 name: req.body.name,
-                password: req.body.password,
+                password: secpassword,//hashed password.
                 email: req.body.email,
                 location: req.body.location
             })
@@ -55,11 +62,20 @@ router.post("/loginuser",
             if (!userdata) {
                 return res.status(400).json({ error: "Try login with correct email" })
             }
-
-            if (req.body.password !== userdata.password) {
+            const pwdcompare=await bcrypt.compare(req.body.password,userdata.password);
+            if (!pwdcompare) {
                 return res.status(400).json({ error: "Try login with correct password" })
             }
-            return res.json({ success: true })
+
+            const data={
+                user:{
+                    id:userdata.id
+                }
+            }
+            //jwt has three parts->header,payload,secretkey so here authToken->header same,payload->data and secretkey->jwtSecret.
+            const authToken=jwt.sign(data,jwtSecret)
+
+            return res.json({ success: true ,authToken:authToken})
         }
         catch (error) {
             console.log(error);

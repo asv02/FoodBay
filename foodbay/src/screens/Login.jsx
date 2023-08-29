@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link,useNavigate} from 'react-router-dom'
 
 export default function Login() {
-  let navigate=useNavigate();//for redirecting to Home after login.
+  let navigate=useNavigate();//for redirecting to any page after login.
   const [credentials, setcredentials] = useState({password: "",email: "" })//default value.
 
   const handlechange = async (e) => {
@@ -27,6 +27,8 @@ export default function Login() {
           alert("Enter valid credentials.")
       }
       if (json.success) {
+        localStorage.setItem("authToken",json.authToken);//storing authToken in frontend
+        // console.log(localStorage.getItem);
           navigate("/");//redirecting to home
       }
     
