@@ -11,10 +11,10 @@ export default function Signup() {
 
     const handlesubmit = async (e) => {
         e.preventDefault()//synthetic event.
-        const response = await fetch("http://localhost:5000/api/createuser",
+        const response = await fetch("http://localhost:5000/api/auth/createuser",
             {//as method in /createuser is post.
                 method: 'POST',
-                header: {
+                headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ name: credentials.name, password: credentials.password, email: credentials.email, location: credentials.location })
@@ -30,7 +30,7 @@ export default function Signup() {
     }
     return (
         <div>
-            <form className='container' onSubmit={onsubmit}>
+            <form className='container' onSubmit={handlesubmit}>
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Name</label>
                     <input type="text" name='name' value={credentials.name} className="form-control" onChange={handlechange} />
