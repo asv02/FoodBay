@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate} from 'react-router-dom'
 
 export default function Login() {
-  
+  let navigate=useNavigate();//for redirecting to Home after login.
   const [credentials, setcredentials] = useState({password: "",email: "" })//default value.
 
   const handlechange = async (e) => {
@@ -26,7 +26,10 @@ export default function Login() {
       if (!json.success) {
           alert("Enter valid credentials.")
       }
-
+      if (json.success) {
+          navigate("/");//redirecting to home
+      }
+    
   }
   
   return (
