@@ -9,7 +9,8 @@ const mongodb = async () => {
         console.log('connection made.');
         const fetched_data = await mongoose.connection.db.collection("Food_items");
         
-        const data=await fetched_data.find({}).toArray();
+        const data=await fetched_data.find({}).toArray();//we want all the data so {} inside find.
+        
         //this try-catch is for data fetching.
         try{
             console.log(data);
