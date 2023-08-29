@@ -16,6 +16,7 @@ app.use((req,res,next)=>{
 app.use(express.json())//important line
 //we use routes because as there can be  many endpoints that can be handled in index.js but let say login is handled by index.js but after login let say we provide functionality of storing history then as user entered in our app there must be endpoints which provide history of work done by him so we use routes and middlewares for them. 
 app.use('/api/auth',require('./Routes/Auth'));
+app.use('/api/data',require('./Routes/DisplayData'));
 mongoDB();
 app.get('/',(req,res)=>{
     res.send('Hello world')
