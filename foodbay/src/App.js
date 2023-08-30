@@ -4,6 +4,7 @@ import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 // above imports are done to run js of bootstrap i.e,js implemented in elements of bootstrap such as arrow of carousal,etc.
 import Home from "./screens/Home";
 import Login from "./screens/Login";
+import { CartProvider } from "./components/ContextReducer";
 import {
   BrowserRouter as Router,
   Routes, Route
@@ -14,6 +15,8 @@ import Signup from "./screens/Signup";
 
 function App() {
   return (
+    <CartProvider>
+      {/* this </CartProvider> is to add functionality to add items in My Cart ,this helps us to tell that dispatch and state is now global.->see in ContextReducer.js */}
     <Router>
       <div>
       <Routes>
@@ -23,6 +26,8 @@ function App() {
       </Routes>
       </div>
     </Router>
+    </CartProvider>
+    
     );
 }
 
