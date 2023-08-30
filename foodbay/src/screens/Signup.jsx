@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 
 export default function Signup() {
-
+    const navigate=useNavigate();
     const [credentials, setcredentials] = useState({ name: "", password: "", location: "", email: "" })//default value.
 
     const handlechange = async (e) => {
@@ -26,6 +26,9 @@ export default function Signup() {
         if (!json.success) {
             alert("Enter valid credentials.")
         }
+        if(json.success){
+            navigate('/login');
+        }
 
     }
     return (
@@ -47,7 +50,7 @@ export default function Signup() {
                     <label htmlFor="address" className="form-label">Address</label>
                     <input type="text" name='location' value={credentials.location} className="form-control" onChange={handlechange} />
                 </div>
-                <button type="submit" className="btn btn-primary">Submit</button>
+                <button type="submit" className="btn btn-primary" onClick={handlesubmit}>Submit</button>
                 <Link to="/login" className="m-3 btn btn-danger">Already a user</Link>
             </form>
         </div>

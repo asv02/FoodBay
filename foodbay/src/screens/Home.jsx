@@ -29,7 +29,7 @@ export default function Home() {
     <div>
       <div> <Navbar /></div>
       <div>
-        <div id="carouselExampleFade" className="carousel slide carousel-fade" data-bs-ride="carousel" style={{ "objectFit": "contain !important" }}>
+        <div id="carouselExampleFade" className="carousel slide carousel-fade" data-bs-ride="carousel" style={{ objectFit: "fill !important" }}>
           <div className="carousel-inner" id="carousel">
             <div className="carousel-caption" style={{ "zIndex": "10" }}>
               <div className="d-flex justify-content-center">
@@ -40,7 +40,7 @@ export default function Home() {
               </div>
             </div>
             <div className="carousel-item active">
-              <img src="https://source.unsplash.com/random/50*50/?burger" className="d-block w-100" style={{ filter: "brightness(30%)" }} alt="..." />
+              <img src="https://source.unsplash.com/random/50*50/?burger" className="d-block w-100" style={{ filter: "brightness(50%)" }} alt="..." />
             </div>
             <div className="carousel-item">
               <img src="https://source.unsplash.com/random/50*50/?drink" className="d-block w-100" style={{ filter: "brightness(30%)" }} alt="..." />
