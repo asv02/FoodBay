@@ -34,7 +34,7 @@ export default function Navbar() {
               {/* Now to know that a user is logined we will use authToken */}
               {(localStorage.getItem("authToken")) ?
                 <li className='nav-item'>
-                  <Link className="nav-link active fs-3" aria-current="page" to={"./"}>My Orders</Link>
+                  <Link className="nav-link active fs-3" aria-current="page" to={"./myorder"}>My Orders</Link>
                 </li> : ""
               }
             </ul>
