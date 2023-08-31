@@ -17,15 +17,32 @@ export default function Cards(props) {
 
 
     const hangleAddtoCart = async () => {
-        await dispatch({
-            type: "ADD",
-            id: props.foodItem._id,
-            name: props.foodItem.name,
-            price: finalPrice,
-            qty: qty,
-            size: size
-        })
-        console.log(data)
+      let food=[]
+      for(const item of data){
+        // agr pahle se hi Cart me wo id present hai jo ham abhi add kr rhe
+        if(item.id===props.foodItem._id){
+            food=item;
+///smj nhi aaya?
+            break;
+        }
+      }
+      console.log(food)
+      console.log(new Date())
+      if (food !== []) {
+        if (food.size === size) {
+            //means when not different dishes only number of dishes already present increses
+          await dispatch({ type: "UPDATE", id: props.foodItem._id, price: finalPrice, qty: qty })
+          return
+        }
+
+        else if (food.size !== size) {
+          await dispatch({ type: "ADD", id: props.foodItem._id, name: props.foodItem.name, price: finalPrice, qty: qty, size: size,img: props.ImgSrc })
+          console.log("Size different so simply ADD one more to the list")
+          return
+        }
+        return
+      }
+      await dispatch({ type: "ADD", id: props.foodItem._id, name: props.foodItem.name, price: finalPrice, qty: qty, size: size,img:props.ImgSrc })
     }
 
     let finalPrice=qty*parseInt(options[size]);

@@ -1,7 +1,17 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Link } from 'react-router-dom'
+import Badge from 'react-bootstrap/Badge';
+import Cart from '../screens/Cart'
+import Modal from '../Modal'
+import { useCart } from './ContextReducer';
 
 export default function Navbar() {
+
+  let data=useCart();//to find length of state to show it on badge.
+
+  //used to view cart-related to createPortal in Modal.js.
+  const [cartView, setcartView] = useState(false)
+
 
   const handleLogout=()=>{
     //when click on logout we should delete authToken
@@ -36,7 +46,15 @@ export default function Navbar() {
               </div>
               :
               <div>
-                <Link className="btn bg-white text-success mx-1" to={"./login"}>My Cart</Link>
+                <div className="btn bg-white text-success mx-1" onClick={()=>{setcartView(true)}}>
+                  My Cart {" "}
+                  <Badge pill bg='danger'>{data.length}</Badge>
+                  </div>
+
+                  {cartView?<Modal onClose={()=>{setcartView(false)}}>
+                    <Cart></Cart>
+                  </Modal>:""}{/*cartView*/}
+
                 <Link className="btn bg-white text-danger mx-1" to={"./login"} onClick={handleLogout}>LogOut</Link></div>
             }
           </div>

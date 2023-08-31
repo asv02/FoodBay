@@ -17,6 +17,22 @@ const reducer=(state,action)=>
           price:action.price,
           img:action.img
         }]
+        //you can add directly to state but to remove you need to make a temp arr ->newArr
+       case "REMOVE":
+       let newArr=[...state]
+       newArr.splice(action.index,1)//1 means wahi wali element ko delete kr do.
+       return newArr;
+       //
+       case "UPDATE":
+        let arr = [...state]
+        arr.find((food, index) => {
+            if (food.id === action.id) {
+                console.log(food.qty, parseInt(action.qty), action.price + food.price)
+                arr[index] = { ...food, qty: parseInt(action.qty) + food.qty, price: action.price + food.price }
+            }
+            return arr
+        })
+        return arr
 
         default:
           console.log("Error in reducer");
