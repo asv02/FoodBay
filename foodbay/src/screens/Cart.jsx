@@ -20,10 +20,9 @@ export default function Cart() {
 
   const handleCheckOut = async () => {
     let userEmail = localStorage.getItem("userEmail");
-    // console.log(data,localStorage.getItem("userEmail"),new Date())
+    
     let response = await fetch("http://localhost:5000/api/auth/orderData", {
-      // credentials: 'include',
-      // Origin:"http://localhost:3000/login",
+    
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -36,10 +35,11 @@ export default function Cart() {
     });
     console.log("JSON RESPONSE:::::", response.status)
     if (response.status === 200) {
+      //to empty the cart.
       dispatch({ type: "DROP" })
     }
   }
-
+  
   let totalPrice = data.reduce((total, food) => total + food.price, 0)
   
   return (

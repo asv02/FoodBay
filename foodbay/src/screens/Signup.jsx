@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link,useNavigate } from 'react-router-dom'
+import Navbar from '../components/Navbar'
 
 export default function Signup() {
     const navigate=useNavigate();
@@ -32,8 +33,10 @@ export default function Signup() {
 
     }
     return (
+        <div style={{backgroundImage: 'url("https://images.pexels.com/photos/326278/pexels-photo-326278.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")', height: '100vh', backgroundSize: 'cover' }}>
+        <div><Navbar></Navbar></div>
         <div>
-            <form className='container' onSubmit={handlesubmit}>
+            <form className='container w-50 m-auto mt-5 border  border-success rounded' onSubmit={handlesubmit}>
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Name</label>
                     <input type="text" name='name' value={credentials.name} className="form-control" onChange={handlechange} />
@@ -53,6 +56,7 @@ export default function Signup() {
                 <button type="submit" className="btn btn-primary" onClick={handlesubmit}>Submit</button>
                 <Link to="/login" className="m-3 btn btn-danger">Already a user</Link>
             </form>
+        </div>
         </div>
     )
 }
