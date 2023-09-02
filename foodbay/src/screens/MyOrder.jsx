@@ -39,6 +39,7 @@ export default function MyOrder() {
                 <div className='row'>
 
                     {orderData !== {} ? Array(orderData).map(data => {
+                        // console.log(data);
                         return (
                             data.orderData ?
                                 data.orderData.order_data.slice(0).reverse().map
@@ -46,7 +47,7 @@ export default function MyOrder() {
                                     ((item) => {
                                         return (
                                             item.map((arrayData) => {
-                                                console.log(arrayData);
+                                                
                                                 return (
                                                     <div  >
                                                         {arrayData.Order_date ? <div className='m-auto mt-5'>
